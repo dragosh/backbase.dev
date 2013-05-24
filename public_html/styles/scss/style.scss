@@ -1,0 +1,208 @@
+/*
+|--------------------------------------------------------------------------
+|  Copyright  © Dragos Oancea-Zevri
+|--------------------------------------------------------------------------
+*/
+/*
+|--------------------------------------------------------------------------
+| Components
+*/
+@import "../components/normalize";
+@import "../components/reset";
+@import "../components/bourbon/bourbon";
+@import "../components/mixins";
+@import "../components/font-awesome";
+
+@import "config";
+
+
+/*
+|--------------------------------------------------------------------------
+| Begin
+*/
+@charset "UTF-8";
+@-webkit-viewport { width: device-width; }
+@-moz-viewport { width: device-width; }
+@-ms-viewport { width: device-width; }
+@-o-viewport { width: device-width; }
+@viewport { width: device-width; }
+
+// short reset
+::-moz-selection { background: $a_color; color: #fff; text-shadow: none; }
+::selection { background: $a_color; color: #fff; text-shadow: none; }
+:focus {outline:none;}
+::-moz-focus-inner {outline:0;}
+object,embed,video{outline: none;}
+//disable selection
+object, button, img,a {
+    @include user-select(none);
+    -webkit-user-drag: none;
+    &:active,&:focus{
+        outline: none;
+        ::-moz-focus-inner {border:0;}
+    }
+}
+img{display: block;}
+a{
+    color: lighten($a_color, 20%);
+
+    &:hover{
+        color:$a_color;
+    }
+}
+//disable outline OS
+a,button{
+   -webkit-tap-highlight-color: rgba(255,255,255,0);
+   -webkit-appearance: none;
+}
+
+html, body,#container {
+    height: 100%;
+    min-height: 100%;
+}
+#loader{
+
+    @include centered(128px, 128px);
+    display: inline-block;
+    @include size(128 128);
+    background: transparent url('../images/loader.gif') no-repeat center center;
+    position:absolute;
+}
+body {
+    @include prefixer(text-rendering, optimizeLegibility, webkit moz ms o spec);
+    @include prefixer(font-smoothing, antialiased, webkit moz ms o spec);
+    @include prefixer(text-size-adjust, 100%, webkit moz ms o spec);
+    color: #333;
+    font-family: "Lato";
+    font-size: em(22, 18);
+    //overflow: hidden;
+}
+#container{
+
+}
+
+/*
+|--------------------------------------------------------------------------
+|   Default Layout
+|--------------------------------------------------------------------------
+*/
+#defaulLayout{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/*
+|--------------------------------------------------------------------------
+| Header
+*/
+header{
+    width: 100%;
+    line-height: 60px;
+    @include transition (all .3s ease-in-out);
+    background-color: rgba(#fff ,1);
+    box-shadow: 0 0 15px rgba(0,0,0, .6);
+    z-index: 10;
+    position:absolute;
+    .wrapper{
+        margin: 10px;
+        @include clearfix
+    }
+}
+//import header modules
+@import "modules/header";
+
+/*
+|--------------------------------------------------------------------------
+| Aside
+*/
+aside{
+    //@include debug(#0cc);
+    width: $sidebar_width;
+
+    background: $c_color;
+    box-shadow: 0 0 15px rgba(0,0,0, .6);
+    z-index: 9;
+    position:absolute;
+    top:0;
+    left: 0;
+    padding-top: $header_height;
+    .preloader{
+        position: absolute;
+        top: 50%;
+        left: 45%;
+    }
+    nav{
+        background: rgba(#eaeaea ,.8);
+        border-bottom:1px solid $a_color;
+    }
+}
+
+//import the sidebar module
+@import "modules/sidebar";
+
+/*
+|--------------------------------------------------------------------------
+| Page Content
+*/
+
+#pages{
+    z-index: 2;
+    @include position(absolute, $header_height 0 0 $sidebar_width);//will be overwrite by js see app.
+    //@include size(100%);
+    .page{
+        //display: none;
+        -webkit-overflow-scrolling: touch;
+
+        position: relative;
+        @include size(auto); //will be overwrite by js see app.setContentViewport
+        overflow-y: scroll;
+        overflow: hidden;
+        .progress{
+            position: absolute;
+            z-index: 20;
+            @include centered(300px, 20px);
+        }
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| News
+*/
+@import "modules/news";
+
+
+/*
+|--------------------------------------------------------------------------
+| Footer
+*/
+
+footer{
+    background: rgba(#eaeaea ,.8);
+    @include position(absolute, 0 0 0px $sidebar_width);
+    width: auto;
+    z-index: 5;
+    @include clearfix;
+    line-height: 23px;
+    .wrapper{
+        @include clearfix;
+        padding: 0 20px;
+    }
+    .copy{
+        width: 60%;
+        float: right;
+        text-align: right;
+        font-size: em(9);
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Common Classes
+*/
+.preloader{
+    display: inline-block;
+    @include size(32 24);
+    background: transparent url('../images/preloader.gif') no-repeat center center;
+    position:absolute;
+    display: none;
+}

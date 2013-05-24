@@ -1,0 +1,44 @@
+{{#if title}}
+<div class="title">
+    {{{title}}}
+</div>
+{{/if}}
+
+<div id="toolbar">
+    <div class="wrapper">
+        <div id="messages">
+                <a class="btn btn-small" href="{{link}}" target="_blank"><i class="icon-eye-open"></i> read more </a>
+                <a class="btn btn-small disabled" href="#"><i class="icon-comment"></i> Comments <small class="badge badge-info"></small></a>
+                <a class="btn btn-small disabled" href="#"><i class="icon-share"></i> Share </a>
+        </div>
+
+        <div id="share">
+            <div class="wrapper">
+            <a href="#" class="icon-twitter-sign icon-large"></a>
+            <a href="#" class="icon-facebook-sign icon-large"></a>
+            <a href="#" class="icon-pinterest-sign icon-large"></a>
+            <a href="#" class="icon-google-plus-sign icon-large"></a>
+            </div>
+        </div>
+         <div id="category">
+            {{#if category}}
+            <i class="icon-tag"></i> {{category}}
+            {{/if}}
+        </div>
+        <nav id="navigation">
+            <div class="btn-group">
+                <button class="btn btn-small disabled"><i class="icon-chevron-left"></i></button>
+                <button class="btn btn-small disabled"><i class="icon-chevron-right"></i></button>
+            </div>
+        </nav>
+     </div>
+</div>
+
+<span class="preloader"></span>
+
+<div class="content">
+    <div class="wrapper">
+        {{{description}}}
+    </div>
+</div>
+

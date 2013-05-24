@@ -1,0 +1,34 @@
+/*
+|--------------------------------------------------------------------------
+| Header Elements
+*/
+
+#leftSide{
+    @include clearfix;
+    #reloadFeed{
+        float: left;
+        display: inline-block;
+        margin: 0 10px 0 0;
+    }
+    float: left;
+    h3.title{
+        line-height: 12px;
+        p{margin: 0 0 4px 0;}
+        strong{
+            font-size:em(9);
+            color: $gray_1;
+        }
+
+    }
+}
+
+#rightSide{
+    float: right;
+    @include clearfix;
+    .bb-logo{
+        display: block;
+        @include hide-text;
+        @include size(40);
+        background: transparent url(../../images/bb_logo.gif) no-repeat center center;
+    }
+}

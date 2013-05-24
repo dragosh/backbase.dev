@@ -1,0 +1,93 @@
+
+
+#itemObject{
+    position:absolute;
+
+    .preloader{
+        position: absolute;
+        top: 5px;
+        left: 10px;
+
+    }
+    &,&>div.wrapper{
+        width: inherit;
+        height: inherit;
+    }
+
+    .title{
+        text-align: center;
+        line-height: 15px;
+        padding:10px;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        @include position(absolute, 0px 0px 0 0px);
+        background: rgba(#eaeaea ,.8);
+        z-index: 5;
+    }
+
+    .content{
+
+        .wrapper{
+            padding: 20px;
+            margin: 40px 0;
+        }
+        img{
+            display: inline-block;
+            padding: 0 5px;
+        }
+    }
+    /*
+    |--------------------------------------------------------------------------
+    | Toolbar
+    */
+   #toolbar{
+        box-shadow: 0 0 15px rgba(0,0,0, .6);
+        background: rgba(#ddd, 1);
+        @include position(absolute, 0 0 0px 0);
+
+        width: 100%;
+        z-index: 5;
+        @include clearfix;
+        line-height: $header_height / 2;
+        .wrapper{
+            @include clearfix;
+            padding: 0 10px;
+        }
+        #category,#messages{
+            float: left;
+        }
+        #category{
+            font-size: em(12);
+        }
+        #share{
+            margin:0 auto;
+            float: left;
+            a{
+                &:hover{text-decoration:none}
+            }
+        }
+        #navigation{
+            float: right;
+            margin-right: 10px;
+        }
+    }
+
+}
+
+ /*
+|--------------------------------------------------------------------------
+| gMap
+*/
+#gMap{
+    width: 100%;
+    height: 100%;
+    background:green;
+    @include position(absolute, 0px 0px 0px 0px);
+    z-index: 1;
+    visibility: hidden;
+    &.visible{
+        visibility: visible;
+    }
+}
+
