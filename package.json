@@ -1,7 +1,9 @@
 {
   "name": "spa-boilerplate",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "~4.10.4"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.4.1",
